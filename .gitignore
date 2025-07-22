@@ -1,0 +1,8 @@
+*.nc
+*.out
+*.tar
+*.gz
+*.tmp
+*.pyc
+__pycache__/
+

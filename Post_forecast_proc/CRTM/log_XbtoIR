@@ -1,0 +1,20 @@
+IBRUN:  Params: compact=1, scatter=0, nompi=0, block=1. CMD=-o  0 XbtoIR_crtm.exe /expanse/lustre/scratch/cpruett/temp_project/BERYL/NoDA/WRF_FREE/wrfout_d01_2024-07-09_12:00:00 /expanse/lustre/scratch/cpruett/temp_project/BERYL/CRTM_OUT/NoDA/GOES16_Ch7_wrfout_d01_2024-07-09_12:00:00.bin 
+IBRUN:  blk parameter is not used 
+IBRUN:  cpus_per_task: 1 
+IBRUN:  OMP_NUM_THREADS  not set 
+IBRUN:  Starting parallel tasks... 
+IBRUN:  Number of CPUs per task: 1 
+IBRUN:  Number of tasks: 128 
+IBRUN:  Number of tasks per node: 128 
+IBRUN:  Affinity not set explicitly 
+ Finished running CRTM on all points
+ CRTM solutions sent to all processes
+ location 5
+ Wrote Longitudes
+ Length of xlong:     1036485
+ Wrote Latitudes
+ Length of xlong and xlat:     2072970
+ Wrote BT to files
+ Total length of records:     3109455
+ Destroying the CRTM...
+IBRUN:  launch command: srun -n 128 --ntasks-per-node 128 -o 0 XbtoIR_crtm.exe /expanse/lustre/scratch/cpruett/temp_project/BERYL/NoDA/WRF_FREE/wrfout_d01_2024-07-09_12:00:00 /expanse/lustre/scratch/cpruett/temp_project/BERYL/CRTM_OUT/NoDA/GOES16_Ch7_wrfout_d01_2024-07-09_12:00:00.bin 

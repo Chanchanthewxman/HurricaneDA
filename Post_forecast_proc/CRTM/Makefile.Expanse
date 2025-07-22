@@ -1,0 +1,29 @@
+export I_MPI_CC=icc
+export I_MPI_CXX=icpc
+export I_MPI_F90=ifort
+export I_MPI_F77=ifort
+export I_MPI_FC=ifort
+
+FC=mpif90
+FCFLAG=-f90=ifort -g -traceback -c -i4 -w -ftz -align all -fno-alias -fp-model precise -assume realloc_lhs -convert little_endian -traceback -MIC -AVX512
+NETCDF=${HOME}
+CRTM_DIR=/expanse/lustre/projects/pen116/zuy121/WRF_DA_Tool/J_PSU-EnKF_w_satellites/fortran_src/crtm_v2.3.0/
+
+
+all: XbtoIR_crtm.exe
+
+clean:
+	rm -f *.mod *.o *.exe
+
+mpi_module.o:
+	$(FC) -c $(FCFLAG) -FR mpi_module.f
+module_netcdf.o:
+	$(FC) -c $(FCFLAG) -I${NETCDF}/include module_netcdf.f
+XbtoIR_crtm.o: mpi_module.o module_netcdf.o
+	$(FC) -o XbtoIR_crtm.o $(FCFLAG) -FR -I$(NETCDF)/include -I$(CRTM_DIR)/include XbtoIR_crtm.f90
+
+XbtoIR_crtm.exe: mpi_module.o module_netcdf.o XbtoIR_crtm.o 
+	$(FC) -o XbtoIR_crtm.exe mpi_module.o module_netcdf.o XbtoIR_crtm.o -L$(CRTM_DIR)/lib -lcrtm -L$(NETCDF)/lib -lnetcdff 
+	
+
+ 

@@ -1,8 +1,11 @@
+*.zip
 *.nc
 *.out
 *.tar
 *.gz
 *.tmp
 *.pyc
+*.png
+*.gif
 __pycache__/
 
